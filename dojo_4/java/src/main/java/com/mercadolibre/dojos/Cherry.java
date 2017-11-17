@@ -7,7 +7,7 @@ public class Cherry {
 
     public Cherry(){}
 
-    public void incrementWeight(Weight weight) {
-        weight.multiply(2);
+    public void incrementWeight(Weight eaterWeight) {
+        eaterWeight.multiply(2);
     }
 }

@@ -8,7 +8,7 @@ public class Packman {
     private Weight weight;
 
     public Packman(){
-        this.weight = new Weight(1);
+        weight = new Weight(1);
     }
 
     public Weight getWeight() {
@@ -16,18 +16,18 @@ public class Packman {
     }
 
     public void eat(Biscuit biscuit) {
-        biscuit.incrementWeight( this.weight );
+        biscuit.incrementWeight( weight );
     }
 
     public void eat(Cherry cherry) {
-        cherry.incrementWeight( this.weight );
+        cherry.incrementWeight( weight );
     }
 
-    public boolean isFatterThan(Weight packmanWeight) {
-        return weight.isGretterThan(packmanWeight);
+    public boolean isFatterThan(Weight weightToCompare) {
+        return weight.isGretterThan(weightToCompare);
     }
 
-    public boolean isDoubleThan(Weight weight) {
-        return this.weight.isDoubleThan(weight);
+    public boolean isDoubleThan(Weight weightToCompare) {
+        return weight.isDoubleThan(weightToCompare);
     }
 }

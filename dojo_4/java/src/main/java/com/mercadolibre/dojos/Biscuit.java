@@ -11,7 +11,7 @@ public class Biscuit {
         this.weight = new Weight(10);
     }
 
-    public void incrementWeight(Weight weight) {
-        weight.add(this.weight);
+    public void incrementWeight(Weight eaterWeight) {
+        eaterWeight.add(this.weight);
     }
 }

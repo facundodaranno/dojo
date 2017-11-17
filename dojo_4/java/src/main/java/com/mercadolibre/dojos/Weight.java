@@ -7,27 +7,27 @@ public class Weight  implements Cloneable{
 
     private Integer weight;
 
-    public Weight(Integer weight) {
-        this.weight = weight;
+    public Weight(Integer weightToAssign) {
+        weight = weightToAssign;
     }
 
-    public Weight(Weight weight) {
-        this.weight = weight.weight;
+    public Weight(Weight weightObjectToCopy) {
+        weight = weightObjectToCopy.weight;
     }
 
-    public void add(Weight weight) {
-        this.weight += weight.weight;
+    public void add(Weight weightToAdd) {
+        weight += weightToAdd.weight;
     }
 
     public void multiply(Integer multiplexer) {
         this.weight *= multiplexer;
     }
 
-    public boolean isGretterThan(Weight weight) {
-        return  this.weight > weight.weight ;
+    public boolean isGretterThan(Weight weightToCompare) {
+        return  weight > weightToCompare.weight ;
     }
 
-    public boolean isDoubleThan(Weight weight) {
-        return  (this.weight  / 2 ) == weight.weight;
+    public boolean isDoubleThan(Weight weightToCompare) {
+        return  ( weight  / 2 ) == weightToCompare.weight;
     }
 }

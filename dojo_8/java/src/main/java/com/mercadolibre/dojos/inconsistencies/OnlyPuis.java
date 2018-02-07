@@ -15,13 +15,18 @@ public class OnlyPuis implements Inconsitency {
         return IInconsistency.ONLY_PUIS;
     }
 
+    @Override
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, Inconsitency inconsitency) {
+        return apply(checkoutOptions) ? this : inconsitency;
+    }
+
     /**
      * Determinate if the item being bought by the user can only be picked up in store (no inconsistency, changes the fallback)
      *
      * @param checkoutOptions - the CheckoutOptionsDto that contains the base data to make the calculations.
      * @return - true if the item can only be picked up in store, false any other case.
      */
-    public boolean apply(CheckoutOptionsDto checkoutOptions) {
+    private boolean apply(CheckoutOptionsDto checkoutOptions) {
         List<ShippingSelectionDto> shippingSelections = checkoutOptions.getShipping().getShippingMethods().getShippingSelections();
         boolean isPUISOnly = !shippingSelections.isEmpty(); // List may have at least one element to reset flag to true
         for (ShippingSelectionDto shippingSelection : shippingSelections) {
@@ -31,6 +36,11 @@ public class OnlyPuis implements Inconsitency {
             }
         }
         return isPUISOnly;
+    }
+
+    @Override
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, AgreeAgree agreeAgree) {
+        return this.apply(checkoutOptions,new NoneInconsitency());
     }
 
 

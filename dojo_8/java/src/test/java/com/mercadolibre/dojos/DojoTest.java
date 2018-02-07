@@ -1,19 +1,16 @@
 package com.mercadolibre.dojos;
 
-
 import com.google.gson.GsonBuilder;
 import com.mercadolibre.dojos.dto.CheckoutOptionsDto;
+import com.mercadolibre.dojos.inconsistencies.AgreeAgree;
+import com.mercadolibre.dojos.inconsistencies.Inconsitency;
+import com.mercadolibre.dojos.inconsistencies.OnlyToAgree;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 
-import static org.mockito.Mockito.mock;
 
-/**
- * Tests for the dojo.
- */
 public class DojoTest {
 
     @Test
@@ -45,6 +42,26 @@ public class DojoTest {
         CheckoutContext checkoutContext = new CheckoutContext(checkoutOptionsDto);
         int inconsistency = InconsistencyCalculator.getInconsistencyValue(checkoutContext);
         Assert.assertEquals(IInconsistency.AGREE_AGREE, inconsistency);
+    }
+
+    @Test
+    public void testAgreeAgreeVsOnlyToAgreeMustWinAgreeAgree()  throws FileNotFoundException {
+        CheckoutOptionsDto checkoutOptionsDto = new GsonBuilder().create().fromJson(loadFile("agree_agree.json"), CheckoutOptionsDto.class);
+
+        Inconsitency agreeAgree = new AgreeAgree();
+        Inconsitency onlyToAgree = new OnlyToAgree();
+
+        Assert.assertEquals( agreeAgree.apply(checkoutOptionsDto,onlyToAgree), agreeAgree);
+    }
+
+    @Test
+    public void testOnlyToAgreeVsOnlyToAgreeMustWinAgreeAgree()  throws FileNotFoundException {
+        CheckoutOptionsDto checkoutOptionsDto = new GsonBuilder().create().fromJson(loadFile("agree_agree.json"), CheckoutOptionsDto.class);
+
+        AgreeAgree agreeAgree = new AgreeAgree();
+        OnlyToAgree onlyToAgree = new OnlyToAgree();
+
+        Assert.assertEquals( onlyToAgree.apply(checkoutOptionsDto,agreeAgree), agreeAgree);
     }
 
     @Test

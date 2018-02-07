@@ -11,7 +11,13 @@ public class NoneInconsitency implements Inconsitency {
         return IInconsistency.NONE;
     }
 
-    public boolean apply(CheckoutOptionsDto checkoutOptions) {
-        return true;
+    @Override
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, Inconsitency inconsitency) {
+        return this;
+    }
+
+    @Override
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, AgreeAgree agreeAgree) {
+        return this;
     }
 }

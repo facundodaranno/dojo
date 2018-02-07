@@ -24,7 +24,7 @@ public class AgreeAgree implements Inconsitency{
      * @param checkoutOptions - the CheckoutOptionsDto that contains the base data to make the calculations.
      * @return - true if the item can only be sent, false any other case.
      */
-    public boolean apply(CheckoutOptionsDto checkoutOptions){
+    private boolean apply(CheckoutOptionsDto checkoutOptions){
         return isShippingToAgreeOnly(checkoutOptions) && isPaymentToAgreeOnly(checkoutOptions);
     }
 
@@ -78,6 +78,16 @@ public class AgreeAgree implements Inconsitency{
 
     public Integer getNumber(){
         return IInconsistency.AGREE_AGREE;
+    }
+
+    @Override
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, Inconsitency inconsitency) {
+        return apply(checkoutOptions) ? this : inconsitency;
+    }
+
+    @Override
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, AgreeAgree agreeAgree) {
+        return this.apply(checkoutOptions,this);
     }
 
 }

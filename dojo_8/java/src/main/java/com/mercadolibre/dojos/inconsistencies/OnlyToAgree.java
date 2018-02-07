@@ -18,7 +18,7 @@ public class OnlyToAgree implements Inconsitency {
         return IInconsistency.ONLY_TO_AGREE;
     }
 
-    public boolean apply(CheckoutOptionsDto checkoutOptions) {
+    private boolean apply(CheckoutOptionsDto checkoutOptions) {
         return isShippingToAgreeOnly(checkoutOptions);
     }
 
@@ -55,6 +55,15 @@ public class OnlyToAgree implements Inconsitency {
             }
         }
         return isToAgree;
+    }
+
+    @Override
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, Inconsitency inconsitency) {
+        return apply(checkoutOptions) ? this : inconsitency;
+    }
+
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, AgreeAgree agreeAgree) {
+        return agreeAgree;
     }
 
 }

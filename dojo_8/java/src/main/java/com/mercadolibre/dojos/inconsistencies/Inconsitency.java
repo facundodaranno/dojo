@@ -7,5 +7,6 @@ import com.mercadolibre.dojos.dto.CheckoutOptionsDto;
  */
 public interface Inconsitency {
     public Integer getNumber();
-    public boolean apply(CheckoutOptionsDto checkoutOptions);
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, Inconsitency inconsitency);
+    public Inconsitency apply(CheckoutOptionsDto checkoutOptions, AgreeAgree agreeAgree);
 }

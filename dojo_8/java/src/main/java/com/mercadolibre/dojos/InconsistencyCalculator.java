@@ -35,20 +35,20 @@ public final class InconsistencyCalculator {
         CheckoutOptionsDto checkoutOptions = checkoutContext.getCheckoutOptionsDto();
 
         List<Inconsitency> inconsistencyList = new ArrayList<Inconsitency>();
-        inconsistencyList.add( new OnlyCanBeSent() );
         inconsistencyList.add( new CantSentXUnits() );
-        inconsistencyList.add( new AgreeAgree() );
-        inconsistencyList.add( new OnlyToAgree() );
         inconsistencyList.add( new OnlyPuis() );
+        inconsistencyList.add( new OnlyToAgree() );
+        inconsistencyList.add( new AgreeAgree() );
+        inconsistencyList.add( new OnlyCanBeSent() );
+
+
+        Inconsitency inconsitencyResult = new NoneInconsitency();
 
         for(Inconsitency inconsitency : inconsistencyList){
-            if(inconsitency.apply(checkoutOptions)){
-                return inconsitency.getNumber();
-            }
+            inconsitencyResult = inconsitency.apply(checkoutOptions, inconsitencyResult);
         }
 
-        Inconsitency noneInconsistency = new NoneInconsitency();
-        return noneInconsistency.getNumber();
+        return inconsitencyResult.getNumber();
     }
 
 }

@@ -17,7 +17,7 @@ public class TripDate {
     public Integer calculateDaysDistance(TripDate date) {
         long startTime = this.date.getTime();
         long endTime = date.date.getTime();
-        long diffTime = endTime - startTime;
+        long diffTime = Math.abs(endTime - startTime);
         return (int) TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS);
     }
 }

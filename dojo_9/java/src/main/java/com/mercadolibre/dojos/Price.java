@@ -11,6 +11,10 @@ public class Price {
         this.price = price;
     }
 
+    public Price(Price otherPrice) {
+        this.price = otherPrice.price;
+    }
+
     public boolean equals(Object another){
         Price anotherPrice = (Price) another;
         return this.price.equals(anotherPrice.price);

@@ -10,7 +10,7 @@ public class Ios810 implements DeviceInterface {
     }
 
     public Congrats renderCongrats() {
-        Congrats congrats = congratsService.getCongratsResponse();
+        Congrats congrats = congratsService.getResponseAsCongratsObject();
         return congrats.renderFor(this);
     }
 }

@@ -4,7 +4,7 @@
 public class FakeCongratsService implements CongratsService {
 
     @Override
-    public Congrats getCongratsResponse() {
+    public Congrats getResponseAsCongratsObject() {
         return new Congrats();
     }
 }

@@ -18,9 +18,9 @@ public class Congrats {
     }
 
     @Override
-    public boolean equals(Object o) {
-        Congrats that = (Congrats) o;
+    public boolean equals(Object object) {
+        Congrats congratsToCompare = (Congrats) object;
 
-        return sectionType != null ? sectionType.equals(that.sectionType) : that.sectionType == null;
+        return sectionType != null ? sectionType.equals(congratsToCompare.sectionType) : congratsToCompare.sectionType == null;
     }
 }

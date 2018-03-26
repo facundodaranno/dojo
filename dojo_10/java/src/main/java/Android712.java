@@ -10,7 +10,7 @@ public class Android712 implements DeviceInterface{
     }
 
     public Congrats renderCongrats() {
-        Congrats congrats = congratsService.renderCongrats();
+        Congrats congrats = congratsService.getCongratsResponse();
         return congrats.renderFor(this);
     }
 }

@@ -78,9 +78,34 @@ public class DojoTest {
 		SolicitudAula solicitudAula = new SolicitudAula(10 , 30);
 		Aula aulaDisponible = listadoAulas.realizarSolicitud( solicitudAula );
 
-		Aula aulaEsperada = new AulaDisponible("Lab C", 15 , 50);
+		Aula aulaEsperada = aulaC;
 		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
 		Assert.assertEquals( aulaDisponible.mostrarNombre() , "Aula: Lab C");
+	}
+
+
+	@Test
+	public void se_solicita_un_aula_para_10_personas_con_30_m2_y_computadoras_debe_indicar_lab_D() {
+
+		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
+
+		Aula aulaA = new AulaDisponible("Lab A", 5  , 10);
+		Aula aulaB = new AulaDisponible("Lab B", 15 , 20);
+		Aula aulaC = new AulaDisponible("Lab C", 15 , 50);
+		Aula aulaD = new AulaDisponible("Lab D", 15 , 50, true);
+
+		ListadoAulas listadoAulas = new ListadoAulas();
+		listadoAulas.agregarAula( aulaA );
+		listadoAulas.agregarAula( aulaB );
+		listadoAulas.agregarAula( aulaC );
+		listadoAulas.agregarAula( aulaD );
+
+		SolicitudAula solicitudAula = new SolicitudAula(10 , 30);
+		Aula aulaDisponible = listadoAulas.realizarSolicitud( solicitudAula );
+
+		Aula aulaEsperada = aulaD;
+		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
+		Assert.assertEquals( aulaDisponible.mostrarNombre() , "Aula: Lab D");
 	}
 
 

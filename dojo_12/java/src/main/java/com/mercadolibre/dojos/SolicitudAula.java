@@ -7,6 +7,7 @@ public class SolicitudAula {
 
     private Integer capacidadSolicitada;
     private Integer m2Solicitados;
+    private Boolean poseeComputadoras;
 
     public SolicitudAula(Integer capacidad) {
         capacidadSolicitada = capacidad;
@@ -24,6 +25,14 @@ public class SolicitudAula {
     public Aula cubreMetrosCuadrados(Integer m2Disponibles, Aula aulaDisponible, Aula defaultAula) {
         if( m2Solicitados != null ){
             return m2Solicitados.compareTo( m2Disponibles ) <= 0 ? aulaDisponible : defaultAula;
+        }else{
+            return defaultAula;
+        }
+    }
+
+    public Aula poseeComputadorasNecesarias(AulaDisponible aulaDisponible, Aula defaultAula) {
+        if( poseeComputadoras != null ){
+            return poseeComputadoras  ? aulaDisponible : defaultAula;
         }else{
             return defaultAula;
         }

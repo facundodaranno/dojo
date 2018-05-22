@@ -8,6 +8,7 @@ public class AulaDisponible implements Aula {
     private String nombre;
     private Integer capacidad;
     private Integer m2;
+    private Boolean poseeComputadoras;
 
     public AulaDisponible(String nombre, Integer capacidad) {
         this.nombre = nombre;
@@ -18,6 +19,13 @@ public class AulaDisponible implements Aula {
         this.nombre = nombre;
         this.capacidad = capacidad;
         this.m2 = m2;
+    }
+
+    public AulaDisponible(String nombre, Integer capacidad, Integer m2, Boolean poseeComputadoras) {
+        this.nombre = nombre;
+        this.capacidad = capacidad;
+        this.m2 = m2;
+        this.poseeComputadoras = poseeComputadoras;
     }
 
     public String mostrarNombre() {
@@ -37,6 +45,7 @@ public class AulaDisponible implements Aula {
 
         aulaADevolver = solicitudAula.cubreDisponibilidad(capacidad, this, aulaADevolver);
         aulaADevolver = solicitudAula.cubreMetrosCuadrados(m2, this, aulaADevolver);
+        aulaADevolver = solicitudAula.poseeComputadorasNecesarias(this, aulaADevolver);
 
         return aulaADevolver;
     }

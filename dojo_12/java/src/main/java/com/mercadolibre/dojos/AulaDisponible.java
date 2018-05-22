@@ -10,20 +10,7 @@ public class AulaDisponible implements Aula {
     private Integer m2;
     private Boolean poseeComputadoras;
 
-    public AulaDisponible(String nombre, Integer capacidad) {
-        this.nombre = nombre;
-        this.capacidad = capacidad;
-        poseeComputadoras = false;
-    }
-
-    public AulaDisponible(String nombre, Integer capacidad, Integer m2) {
-        this.nombre = nombre;
-        this.capacidad = capacidad;
-        this.m2 = m2;
-        poseeComputadoras = false;
-    }
-
-    public AulaDisponible(String nombre, Integer capacidad, Integer m2, Boolean poseeComputadoras) {
+    private AulaDisponible(String nombre, Integer capacidad, Integer m2, Boolean poseeComputadoras) {
         this.nombre = nombre;
         this.capacidad = capacidad;
         this.m2 = m2;
@@ -50,5 +37,31 @@ public class AulaDisponible implements Aula {
         aulaADevolver = solicitudAula.poseeComputadorasNecesarias(poseeComputadoras,this, aulaADevolver);
 
         return aulaADevolver;
+    }
+
+    public static class Builder{
+        private final String nombre;
+        private final Integer capacidad;
+        private Integer m2 = 0;
+        private Boolean poseeComputadoras = false;
+
+        public Builder(String nombre, Integer capacidad){
+            this.nombre = nombre;
+            this.capacidad = capacidad;
+        }
+
+        public Builder m2(Integer m2){
+            this.m2 = m2;
+            return this;
+        }
+
+        public Builder poseeComputadoras(){
+            this.poseeComputadoras = true;
+            return  this;
+        }
+
+        public AulaDisponible build(){
+            return new AulaDisponible( nombre, capacidad,  m2,  poseeComputadoras);
+        }
     }
 }

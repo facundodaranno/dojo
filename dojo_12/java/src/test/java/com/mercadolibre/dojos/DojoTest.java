@@ -25,8 +25,8 @@ public class DojoTest {
 
 		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
 
-		Aula aulaA = new AulaDisponible("Lab A", 5);
-		Aula aulaB = new AulaDisponible("Lab B", 15);
+		Aula aulaA = new AulaDisponible.Builder("Lab A", 5).build();
+		Aula aulaB = new AulaDisponible.Builder("Lab B", 15).build();
 
 		ListadoAulas listadoAulas = new ListadoAulas();
 		listadoAulas.agregarAulas( aulaA , aulaB );
@@ -34,7 +34,7 @@ public class DojoTest {
 		SolicitudAula solicitudAula = new SolicitudAula(10);
 		Aula aulaDisponible = listadoAulas.realizarSolicitud( solicitudAula );
 
-		Aula aulaEsperada = new AulaDisponible("Lab B", 15);
+		Aula aulaEsperada = aulaB;
 		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
 		Assert.assertEquals( aulaDisponible.mostrarNombre() , "Aula: Lab B");
 	}
@@ -44,8 +44,8 @@ public class DojoTest {
 
 		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
 
-		Aula aulaA = new AulaDisponible("Lab A", 5);
-		Aula aulaB = new AulaDisponible("Lab B", 15);
+		Aula aulaA = new AulaDisponible.Builder("Lab A", 5).build();
+		Aula aulaB = new AulaDisponible.Builder("Lab B", 15).build();
 
 		ListadoAulas listadoAulas = new ListadoAulas();
 		listadoAulas.agregarAulas( aulaA , aulaB );
@@ -64,9 +64,17 @@ public class DojoTest {
 
 		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
 
-		Aula aulaA = new AulaDisponible("Lab A", 5  , 10);
-		Aula aulaB = new AulaDisponible("Lab B", 15 , 20);
-		Aula aulaC = new AulaDisponible("Lab C", 15 , 50);
+		Aula aulaA = new AulaDisponible.Builder("Lab A", 5)
+				.m2(10)
+				.build();
+
+		Aula aulaB = new AulaDisponible.Builder("Lab B", 15)
+				.m2(20)
+				.build();
+
+		Aula aulaC = new AulaDisponible.Builder("Lab C", 15)
+				.m2(50)
+				.build();
 
 		ListadoAulas listadoAulas = new ListadoAulas();
 		listadoAulas.agregarAulas( aulaA, aulaB, aulaC );
@@ -87,10 +95,22 @@ public class DojoTest {
 
 		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
 
-		Aula aulaA = new AulaDisponible("Lab A", 5  , 10);
-		Aula aulaB = new AulaDisponible("Lab B", 15 , 20);
-		Aula aulaC = new AulaDisponible("Lab C", 15 , 50);
-		Aula aulaD = new AulaDisponible("Lab D", 15 , 50, true);
+		Aula aulaA = new AulaDisponible.Builder("Lab A", 5)
+				.m2(10)
+				.build();
+
+		Aula aulaB = new AulaDisponible.Builder("Lab B", 15)
+				.m2(20)
+				.build();
+
+		Aula aulaC = new AulaDisponible.Builder("Lab C", 15)
+				.m2(50)
+				.build();
+
+		Aula aulaD = new AulaDisponible.Builder("Lab D", 15)
+				.m2(50)
+				.poseeComputadoras()
+				.build();
 
 		ListadoAulas listadoAulas = new ListadoAulas();
 		listadoAulas.agregarAula( aulaA );
@@ -114,11 +134,24 @@ public class DojoTest {
 
 		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
 
-		Aula aulaA = new AulaDisponible("Lab A", 5  , 10);
-		Aula aulaB = new AulaDisponible("Lab B", 15 , 20);
-		Aula aulaC = new AulaDisponible("Lab C", 15 );
-		Aula aulaD = new AulaDisponible("Lab D", 15 , null, false);
-		Aula aulaE = new AulaDisponible("Lab E", 15 , null, true);
+
+		Aula aulaA = new AulaDisponible.Builder("Lab A", 5)
+				.m2(10)
+				.build();
+
+		Aula aulaB = new AulaDisponible.Builder("Lab B", 15)
+				.m2(20)
+				.build();
+
+		Aula aulaC = new AulaDisponible.Builder("Lab C", 15)
+				.build();
+
+		Aula aulaD = new AulaDisponible.Builder("Lab D", 15)
+				.build();
+
+		Aula aulaE = new AulaDisponible.Builder("Lab E", 15)
+				.poseeComputadoras()
+				.build();
 
 		ListadoAulas listadoAulas = new ListadoAulas();
 		listadoAulas.agregarAulas( aulaA , aulaB, aulaC, aulaD, aulaE );

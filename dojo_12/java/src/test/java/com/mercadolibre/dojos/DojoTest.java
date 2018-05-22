@@ -25,8 +25,8 @@ public class DojoTest {
 
 		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
 
-		Aula aulaA = new AulaDisponible("aula_a", 5);
-		Aula aulaB = new AulaDisponible("aula_b", 15);
+		Aula aulaA = new AulaDisponible("Lab A", 5);
+		Aula aulaB = new AulaDisponible("Lab B", 15);
 
 		ListadoAulas listadoAulas = new ListadoAulas();
 		listadoAulas.agregarAula( aulaA );
@@ -35,9 +35,9 @@ public class DojoTest {
 		SolicitudAula solicitudAula = new SolicitudAula(10);
 		Aula aulaDisponible = listadoAulas.realizarSolicitud( solicitudAula );
 
-		Aula aulaEsperada = new AulaDisponible("aula_b", 15);
+		Aula aulaEsperada = new AulaDisponible("Lab B", 15);
 		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
-		Assert.assertEquals( aulaDisponible.mostrarNombre() , "aula_b");
+		Assert.assertEquals( aulaDisponible.mostrarNombre() , "Aula: Lab B");
 	}
 
 	@Test
@@ -45,8 +45,8 @@ public class DojoTest {
 
 		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
 
-		Aula aulaA = new AulaDisponible("aula_a", 5);
-		Aula aulaB = new AulaDisponible("aula_b", 15);
+		Aula aulaA = new AulaDisponible("Lab A", 5);
+		Aula aulaB = new AulaDisponible("Lab B", 15);
 
 		ListadoAulas listadoAulas = new ListadoAulas();
 		listadoAulas.agregarAula( aulaA );
@@ -57,7 +57,7 @@ public class DojoTest {
 
 		Aula aulaEsperada = new AulaNoDisponible();
 		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
-		Assert.assertEquals( aulaDisponible.mostrarNombre() , "Aula no disponible");
+		Assert.assertEquals( aulaDisponible.mostrarNombre() , "No hay aula disponible");
 	}
 
 }

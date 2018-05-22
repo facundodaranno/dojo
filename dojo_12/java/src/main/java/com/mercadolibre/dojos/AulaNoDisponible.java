@@ -6,7 +6,7 @@ package com.mercadolibre.dojos;
 public class AulaNoDisponible implements Aula {
 
     public String mostrarNombre() {
-        return "Aula no disponible";
+        return "No hay aula disponible";
     }
 
     public boolean equals(Object object) {

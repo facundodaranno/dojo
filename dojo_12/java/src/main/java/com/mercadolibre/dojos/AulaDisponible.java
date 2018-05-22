@@ -14,7 +14,7 @@ public class AulaDisponible implements Aula {
     }
 
     public String mostrarNombre() {
-        return nombre;
+        return "Aula: " + nombre;
     }
 
     public boolean equals(Object object) {

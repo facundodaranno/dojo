@@ -25,9 +25,8 @@ public class DojoTest {
 
 		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
 
-		Aula aulaA = new Aula("aula_a", 5);
-		Aula aulaB = new Aula("aula_b", 15);
-		Aula aulaB = new Aula("aula_c", 15);
+		Aula aulaA = new AulaDisponible("aula_a", 5);
+		Aula aulaB = new AulaDisponible("aula_b", 15);
 
 		ListadoAulas listadoAulas = new ListadoAulas();
 		listadoAulas.agregarAula( aulaA );
@@ -36,7 +35,26 @@ public class DojoTest {
 		SolicitudAula solicitudAula = new SolicitudAula(10);
 		Aula aulaDisponible = listadoAulas.realizarSolicitud( solicitudAula );
 
-		Aula aulaEsperada = new Aula("aula_b", 15);
+		Aula aulaEsperada = new AulaDisponible("aula_b", 15);
+		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
+	}
+
+	@Test
+	public void se_solicita_un_aula_para_30_personas_debe_indicar_no_hay_aula_disponibles() {
+
+		// Listado de aulas:  [{nombre:aula_a, capacidadSolicitada:5},{nombre:aula_b, capacidadSolicitada:15}]
+
+		Aula aulaA = new AulaDisponible("aula_a", 5);
+		Aula aulaB = new AulaDisponible("aula_b", 15);
+
+		ListadoAulas listadoAulas = new ListadoAulas();
+		listadoAulas.agregarAula( aulaA );
+		listadoAulas.agregarAula( aulaB );
+
+		SolicitudAula solicitudAula = new SolicitudAula(30);
+		Aula aulaDisponible = listadoAulas.realizarSolicitud( solicitudAula );
+
+		Aula aulaEsperada = new AulaNoDisponible();
 		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
 	}
 

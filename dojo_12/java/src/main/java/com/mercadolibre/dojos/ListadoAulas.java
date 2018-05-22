@@ -19,7 +19,7 @@ public class ListadoAulas {
 
     public Aula realizarSolicitud(SolicitudAula solicitudAula) {
 
-        Aula aulaDisponible = new Aula("No Disponbile", 0);
+        Aula aulaDisponible = new AulaNoDisponible();
 
         for ( Aula aula : aulas ) {
             aulaDisponible = aula.respondeASolicitudOrDefault(solicitudAula, aulaDisponible);

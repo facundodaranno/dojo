@@ -1,27 +1,9 @@
 package com.mercadolibre.dojos;
 
 /**
- * Created by fdaranno on 21/5/18.
+ * Created by fdaranno on 22/5/18.
  */
-public class Aula {
-
-    private String nombre;
-    private Integer capacidad;
-
-    public Aula(String nombre, Integer capacidad) {
-        this.nombre = nombre;
-        this.capacidad = capacidad;
-    }
-
-    public String mostrarNombre() {
-        return nombre;
-    }
-
-    public boolean equals(Aula aula) {
-        return nombre.equals( aula.nombre ) && capacidad.equals(aula.capacidad );
-    }
-
-    public Aula respondeASolicitudOrDefault(SolicitudAula solicitudAula, Aula defaultAula) {
-        return solicitudAula.esCubiertaPor(capacidad, this, defaultAula);
-    }
+public interface Aula {
+    Aula respondeASolicitudOrDefault(SolicitudAula solicitudAula, Aula aulaDisponible);
+    String mostrarNombre();
 }

@@ -7,10 +7,17 @@ public class AulaDisponible implements Aula {
 
     private String nombre;
     private Integer capacidad;
+    private Integer m2;
 
     public AulaDisponible(String nombre, Integer capacidad) {
         this.nombre = nombre;
         this.capacidad = capacidad;
+    }
+
+    public AulaDisponible(String nombre, Integer capacidad, Integer m2) {
+        this.nombre = nombre;
+        this.capacidad = capacidad;
+        this.m2 = m2;
     }
 
     public String mostrarNombre() {
@@ -26,6 +33,11 @@ public class AulaDisponible implements Aula {
     }
 
     public Aula respondeASolicitudOrDefault(SolicitudAula solicitudAula, Aula defaultAula) {
-        return solicitudAula.esCubiertaPor(capacidad, this, defaultAula);
+        Aula aulaADevolver = defaultAula;
+
+        aulaADevolver = solicitudAula.cubreDisponibilidad(capacidad, this, aulaADevolver);
+        aulaADevolver = solicitudAula.cubreMetrosCuadrados(m2, this, aulaADevolver);
+
+        return aulaADevolver;
     }
 }

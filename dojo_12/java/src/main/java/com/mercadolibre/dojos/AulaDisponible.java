@@ -17,8 +17,12 @@ public class AulaDisponible implements Aula {
         return nombre;
     }
 
-    public boolean equals(AulaDisponible aula) {
-        return nombre.equals( aula.nombre ) && capacidad.equals(aula.capacidad );
+    public boolean equals(Object object) {
+        if ( object.getClass().equals( this.getClass() ) ){
+            AulaDisponible aula = (AulaDisponible) object;
+            return nombre.equals( aula.nombre ) && capacidad.equals(aula.capacidad );
+        }
+        return false;
     }
 
     public Aula respondeASolicitudOrDefault(SolicitudAula solicitudAula, Aula defaultAula) {

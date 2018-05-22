@@ -37,6 +37,7 @@ public class DojoTest {
 
 		Aula aulaEsperada = new AulaDisponible("aula_b", 15);
 		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
+		Assert.assertEquals( aulaDisponible.mostrarNombre() , "aula_b");
 	}
 
 	@Test
@@ -56,6 +57,7 @@ public class DojoTest {
 
 		Aula aulaEsperada = new AulaNoDisponible();
 		Assert.assertTrue( aulaDisponible.equals( aulaEsperada ) );
+		Assert.assertEquals( aulaDisponible.mostrarNombre() , "Aula no disponible");
 	}
 
 }

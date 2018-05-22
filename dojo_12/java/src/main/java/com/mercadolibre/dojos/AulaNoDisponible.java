@@ -5,18 +5,12 @@ package com.mercadolibre.dojos;
  */
 public class AulaNoDisponible implements Aula {
 
-    public AulaNoDisponible() {}
-
     public String mostrarNombre() {
-        return "Aula no disponibles";
+        return "Aula no disponible";
     }
 
-    public boolean equals(AulaDisponible aula) {
-        return false;
-    }
-
-    public boolean equals(AulaNoDisponible aula) {
-        return true;
+    public boolean equals(Object object) {
+        return object.getClass().equals( this.getClass() );
     }
 
     public Aula respondeASolicitudOrDefault(SolicitudAula solicitudAula, Aula defaultAula) {

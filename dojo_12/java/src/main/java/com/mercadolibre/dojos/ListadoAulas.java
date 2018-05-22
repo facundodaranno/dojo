@@ -17,6 +17,12 @@ public class ListadoAulas {
         aulas.add(aula);
     }
 
+    public void agregarAulas(Aula... aulasToAdd) {
+        for ( Aula aulaToAdd : aulasToAdd ) {
+            aulas.add(aulaToAdd);
+        }
+    }
+
     public Aula realizarSolicitud(SolicitudAula solicitudAula) {
 
         Aula aulaDisponible = new AulaNoDisponible();

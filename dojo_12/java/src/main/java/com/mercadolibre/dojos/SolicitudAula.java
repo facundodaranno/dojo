@@ -11,17 +11,7 @@ public class SolicitudAula {
 
     public SolicitudAula(Integer capacidad) {
         capacidadSolicitada = capacidad;
-    }
-
-    public SolicitudAula(Integer capacidad, Integer m2) {
-        capacidadSolicitada = capacidad;
-        m2Solicitados = m2;
-    }
-
-    public SolicitudAula(Integer capacidad, Integer m2, Boolean poseeComputadoras) {
-        capacidadSolicitada = capacidad;
-        m2Solicitados = m2;
-        this.poseeComputadoras = poseeComputadoras;
+        poseeComputadoras = false;
     }
 
     public Aula cubreDisponibilidad(Integer capacidadDisponible, Aula aulaDisponible, Aula defaultAula) {
@@ -36,11 +26,17 @@ public class SolicitudAula {
         }
     }
 
-    public Aula poseeComputadorasNecesarias(AulaDisponible aulaDisponible, Aula defaultAula) {
-        if( poseeComputadoras != null ){
-            return poseeComputadoras  ? aulaDisponible : defaultAula;
-        }else{
-            return defaultAula;
-        }
+    public Aula poseeComputadorasNecesarias(Boolean poseeComputadoras, AulaDisponible aulaDisponible, Aula defaultAula) {
+        return this.poseeComputadoras && poseeComputadoras ? aulaDisponible : defaultAula;
+    }
+
+    public SolicitudAula necesitaComputadoras() {
+        this.poseeComputadoras = true;
+        return this;
+    }
+
+    public SolicitudAula agregarRestriccionM2(Integer m2) {
+        m2Solicitados = m2;
+        return this;
     }
 }

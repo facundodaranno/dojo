@@ -100,7 +100,7 @@ public class DojoTest {
 		listadoAulas.agregarAula( aulaC );
 		listadoAulas.agregarAula( aulaD );
 
-		SolicitudAula solicitudAula = new SolicitudAula(10 , 30);
+		SolicitudAula solicitudAula = new SolicitudAula(10 , 30,true);
 		Aula aulaDisponible = listadoAulas.realizarSolicitud( solicitudAula );
 
 		Aula aulaEsperada = aulaD;

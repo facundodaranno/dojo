@@ -18,6 +18,12 @@ public class SolicitudAula {
         m2Solicitados = m2;
     }
 
+    public SolicitudAula(Integer capacidad, Integer m2, Boolean poseeComputadoras) {
+        capacidadSolicitada = capacidad;
+        m2Solicitados = m2;
+        this.poseeComputadoras = poseeComputadoras;
+    }
+
     public Aula cubreDisponibilidad(Integer capacidadDisponible, Aula aulaDisponible, Aula defaultAula) {
         return capacidadSolicitada.compareTo( capacidadDisponible ) <= 0  ? aulaDisponible : defaultAula;
     }
